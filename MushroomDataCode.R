@@ -1,0 +1,21 @@
+library(RWeka)
+library(caret)
+mushroom = read.csv("~/Desktop/DS 4559 2016/mushroom.csv")
+View(mushroom)
+m <- randomForest(EorP ~ ., mushroom)
+varImpPlot(m)
+varImp(m)
+summary(mushroom)
+library(randomForest)
+head(mushroom$ScolorBelow)
+library(party)
+Treemodel = ctree(EorP~.,data=mushroom)
+plot(Treemodel)
+p <- predict(Treemodel,mushroom)
+confusionMatrix(p,mushroom$EorP)
+m2 <- OneR(EorP ~ ., data = mushroom)
+p2 <- predict(m2, mushroom)
+m2
+m3 <- JRip(EorP~.,data=mushroom)
+m3
+
